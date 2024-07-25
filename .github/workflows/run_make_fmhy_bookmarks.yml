@@ -2,7 +2,7 @@ name: Run make_fmhy_bookmarks.py
 
 on:
   schedule:
-    - cron: '0 0 * * *' # This means the action will run at midnight UTC every day
+    - cron: '0 0 * * 1' # This means the action will run every Monday at midnight UTC
   workflow_dispatch: # Allows the workflow to be run manually from the GitHub UI
 
 jobs:
