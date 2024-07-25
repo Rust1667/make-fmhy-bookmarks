@@ -209,6 +209,10 @@ def markdown_to_html_bookmarks(input_md_text, output_file):
 
         # Find all matches in the line for URLs
         matches = url_pattern.findall(line)
+
+        # If the input_md_text is wiki_adapted_starred_only_md, only add the first match of url_pattern in each line
+        if input_md_text == wiki_adapted_starred_only_md:
+            matches = matches[:1]
         
         # Extract the description (text after the last match)
         last_match_end = line.rfind(')')
