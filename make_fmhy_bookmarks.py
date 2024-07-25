@@ -7,6 +7,10 @@ def addPretext(lines, sectionName, baseURL, subURL):
     currSubCat = ""
     currSubSubCat = ""
 
+    #Remove from the lines any line that isnt a heading and doesnt contain the character `⭐`
+    #lines = [line for line in lines if line.startswith("#") or '⭐' in line]
+
+    #Parse headings
     for line in lines:
         if line.startswith("#"): #Title Lines
             if not subURL=="storage":
@@ -142,7 +146,7 @@ def alternativeWikiIndexing():
         dlWikiChunk("DEVTools.md", "🖥️", "dev-tools"),
         dlWikiChunk("Non-English.md", "🌏", "non-eng"),
         dlWikiChunk("STORAGE.md", "🗄️", "storage"),
-        dlWikiChunk("base64.md", "🔑", "base64"),
+        #dlWikiChunk("base64.md", "🔑", "base64"),
         dlWikiChunk("NSFWPiracy.md", "🌶", "https://saidit.net/s/freemediafuckyeah/wiki/index")
     ]
     return [item for sublist in wikiChunks for item in sublist] #Flatten a <list of lists of strings> into a <list of strings>
@@ -157,12 +161,14 @@ def alternativeWikiIndexing():
 # Instead of saving it to a file, save it into a string variable
 wiki_adapted_md = '\n'.join(alternativeWikiIndexing())
 
+# Remove from the lines in wiki_adapted_md any line that doesnt contain the character `⭐`
+wiki_adapted_starred_only_md = '\n'.join([line for line in wiki_adapted_md.split('\n') if '⭐' in line])
 
 
 
 import re
 
-def markdown_to_html_bookmarks(input_file, output_file):
+def markdown_to_html_bookmarks(input_md_text, output_file):
     # Predefined folder name
     folder_name = "FMHY"
     
@@ -171,7 +177,7 @@ def markdown_to_html_bookmarks(input_file, output_file):
     #    markdown_content = f.read()
 
     # Instead of reading from a file, read from a string variable
-    markdown_content = wiki_adapted_md
+    markdown_content = input_md_text
     
     # Regex pattern to extract URLs and titles from markdown
     url_pattern = re.compile(r'\[([^\]]+)\]\((https?://[^\)]+)\)')
@@ -249,4 +255,5 @@ def markdown_to_html_bookmarks(input_file, output_file):
         f.write(html_content)
 
 # Example usage:
-markdown_to_html_bookmarks('wiki_adapted.md', 'fmhy_in_bookmarks.html')
+markdown_to_html_bookmarks(wiki_adapted_md, 'fmhy_in_bookmarks.html')
+markdown_to_html_bookmarks(wiki_adapted_starred_only_md, 'fmhy_in_bookmarks_starred_only.html')
