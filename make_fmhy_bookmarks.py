@@ -220,7 +220,7 @@ def markdown_to_html_bookmarks(input_md_text, output_file):
         
         # Add matches to the appropriate hierarchy
         for title, url in matches:
-            full_title = f"{title} - {description}" if description else title
+            full_title = f"{title}{description}" if description else title
             bookmarks[level1][level2][level3].append((full_title, url))
     
     # Function to generate HTML from nested dictionary
