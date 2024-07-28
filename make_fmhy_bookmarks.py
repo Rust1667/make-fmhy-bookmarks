@@ -216,11 +216,15 @@ def markdown_to_html_bookmarks(input_md_text, output_file):
         
         # Extract the description (text after the last match)
         last_match_end = line.rfind(')')
-        description = line[last_match_end+1:].strip() if last_match_end != -1 else ''
+        description = line[last_match_end+1:].replace('**', '').strip() if last_match_end != -1 else ''
         
+        # When the description is empty, use as description the lowest hierachy level that is not empty
+        if not description:
+            description = '- ' + (level3 if level3 != '/' else level2 if level2 else level1)
+
         # Add matches to the appropriate hierarchy
         for title, url in matches:
-            full_title = f"{title}{description}" if description else title
+            full_title = f"{title} {description}" if description else title
             bookmarks[level1][level2][level3].append((full_title, url))
     
     # Function to generate HTML from nested dictionary
