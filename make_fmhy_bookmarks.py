@@ -97,7 +97,7 @@ def dlWikiChunk(fileName, icon, redditSubURL):
     except:
         if not fileName=='base64.md':
             print("Local file not found. Downloading " + fileName + " from Github...")
-            page = requests.get("https://raw.githubusercontent.com/nbats/FMHYedit/main/" + fileName).text
+            page = requests.get("https://raw.githubusercontent.com/fmhy/FMHYedit/main/docs/" + fileName.lower()).text
         elif fileName=='base64.md':
             print("Local file not found. Downloading rentry.co/FMHYBase64...")
             page = requests.get("https://rentry.co/FMHYBase64/raw").text.replace("\r", "")
@@ -154,9 +154,9 @@ def alternativeWikiIndexing():
 
 
 # Save the result of alternativeWikiIndexing to a .md file
-#with open('wiki_adapted.md', 'w') as f:
-#    for line in alternativeWikiIndexing():
-#        f.write(line + '\n')
+# with open('wiki_adapted.md', 'w') as f:
+#     for line in alternativeWikiIndexing():
+#         f.write(line + '\n')
 
 # Instead of saving it to a file, save it into a string variable
 wiki_adapted_md = '\n'.join(alternativeWikiIndexing())
@@ -263,7 +263,7 @@ def markdown_to_html_bookmarks(input_md_text, output_file):
         f.write(html_content)
 
     # Print success message
-    print(f'Successfully created bookmarks in {output_file}')
+    #print(f'Successfully created bookmarks in {output_file}')
 
 # Example usage:
 markdown_to_html_bookmarks(wiki_adapted_md, 'fmhy_in_bookmarks.html')
