@@ -262,6 +262,9 @@ def markdown_to_html_bookmarks(input_md_text, output_file):
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(html_content)
 
+    # Print success message
+    print(f'Successfully created bookmarks in {output_file}')
+
 # Example usage:
 markdown_to_html_bookmarks(wiki_adapted_md, 'fmhy_in_bookmarks.html')
 markdown_to_html_bookmarks(wiki_adapted_starred_only_md, 'fmhy_in_bookmarks_starred_only.html')
