@@ -9,4 +9,4 @@ Web browsers have auto-complete and search functions that are based on bookmarke
 ![](https://i.imgur.com/h1GfL1W.png)
 
 ### How to download the importable HTML files?
-![](https://cdn.discordapp.com/attachments/997291314389467146/1266015034987905106/image.png?ex=66a39be1&is=66a24a61&hm=e782c1b10e363cfc360571c96e21a307dded100a5a513d8d541888b50332b271&)
+![](https://i.imgur.com/e4xN3wy.png)
