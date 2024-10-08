@@ -1,3 +1,6 @@
+**Archiving this one. Use https://github.com/fmhy/bookmarks instead.**
+_______________________________________________________________________________
+
 This repository is programmed to automatically generate browser bookmarks for the link collection FMHY.
 
 Bookmarks are generated as HTML files which can be imported into any web browser.
